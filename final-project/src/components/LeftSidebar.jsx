@@ -1,13 +1,14 @@
-import {Heart,Search,Home,LogOutIcon, MessageCircle, PlusSquare, TrendingUp} from 'lucide-react'
+import {Heart,Search ,Home, LogOut, MessageCircle, PlusSquare, TrendingUp, LogOutIcon} from 'lucide-react'
 import React from 'react'
 import { Avatar,AvatarImage,AvatarFallback } from './ui/avatar'
+import { useSelector } from 'react-redux'
 const sidebarItems = [
     {icon:<Home/>, text: "Home"},
     {icon:<Search/>, text: "Search"},
     {icon:<TrendingUp/>, text: "Explore"},
     {icon:<MessageCircle/>, text: "Messages"},
     {icon:<Heart/>, text: "Heart"},
-    {icon:<PlusSquare/>, text: "PlusSquare"},
+    {icon:<PlusSquare/>, text: "Create"},
 
     {icon:(
         <Avatar className='w-6 h-6'>
@@ -15,17 +16,22 @@ const sidebarItems = [
   <AvatarFallback>CN</AvatarFallback>
 </Avatar>
     ), text: "Profile"},
-    {icon:<LogOutIcon/>, text: "LogOut"},
+    {icon:<LogOut/>, text: "LogOut"},
 ]
 const leftsidebar = () => {
+
+const sidebarHandler = (textType) => {
+  alert(textType)
+}
+
   return (
-    <div className='fixed top-8 z-18 left-0 px-4 border-grey-300 w-[16%] h-screen'>
+    <div className='fixed top-10 z-10 left-0 px-4 border-gray-300 w-[16%] h-screen'>
    <div className=' flex flex-col'>
     <h1>LOGO</h1>
    {
     sidebarItems.map((item,index)=>{
         return(
-            <div onClick={() => sidebarHndler(item)} key={index} className='flex items-center gap-3 relative hover:bg-gray-100 cursor-pointer rounded-lg p-3my-3 ' >
+            <div onClick={() => sidebarHandler(item)} key={index} className='flex items-center gap-3 relative hover:bg-gray-100 cursor-pointer rounded-lg p-3 my-3 ' >
                 {item.icon}
                 <span>{item.text}</span>
                 </div>
