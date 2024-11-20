@@ -29,6 +29,28 @@ const posts = [
     views: "1K+",
     isVideo: true,
   },
+  {
+  image: "https://via.placeholder.com/600x300",
+  time: "30 minutes ago",
+  caption: "The Earth has music for those who listen",
+  hashtags: "#NatureLovers #Explore #WildlifePhotography #MotherNature #NaturePerfection",
+  likes: 1200,
+  comments: 173,
+  shares: 229,
+  views: "1K+",
+  isVideo: false,
+},
+{
+  image: "https://via.placeholder.com/600x300",
+  time: "50 minutes ago",
+  caption: "The Earth has music for those who listen",
+  hashtags: "#NatureLovers #Explore #WildlifePhotography #MotherNature #NaturePerfection",
+  likes: 1200,
+  comments: 173,
+  shares: 229,
+  views: "1K+",
+  isVideo: true,
+},
 ];
 const ProfilePage = () => {
   return (
