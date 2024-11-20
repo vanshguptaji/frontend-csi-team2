@@ -6,6 +6,11 @@ import HotTopics from "../components/Hottopics.jsx";
 import Followings from "../components/Followings.jsx";
 import Addfriends from "../components/Addfriends.jsx";
 import Favgroups from "../components/Favgroups.jsx";
+import { useParams } from "react-router-dom";
+import useGetUserProfile from "./hooks/useGetUserProfile.jsx";
+import { useSelector } from 'react-redux';
+
+
 const posts = [
   {
     image: "https://via.placeholder.com/600x300",
@@ -53,6 +58,11 @@ const posts = [
 },
 ];
 const ProfilePage = () => {
+  const params = useParams();
+  const userId =params.id;
+  useGetUserProfile(userId);
+  const {userProfile}= useSelector(store=>store.auth);
+  console.log(userProfile);
   return (
     <div className="min-h-screen  flex flex-col bg-black  text-white">
       {/* Navbar */}
@@ -115,11 +125,11 @@ const ProfilePage = () => {
 {/* Profile */}
 <div className="flex items-center space-x-2">
           <img
-            src="https://via.placeholder.com/40"
+            src={userProfile?.profilePicture}
             alt="User Avatar"
             className="w-8 h-8 rounded-full"
           />
-          <span className="text-gray-400">@AliceK</span>
+          <span className="text-gray-400">{userProfile?.username}@alice</span>
         </div>
 
         </div>
@@ -236,18 +246,26 @@ const ProfilePage = () => {
           <p className="text-gray-400"></p>
           <div className="flex flex-col items-center max-w-[900px] mx-auto bg-gray-900 text-white rounded-xl overflow-hidden shadow-lg">
       {/* Background Image */}
-      <div className="w-full  h-40 bg-cover bg-center" style={{ backgroundImage: "url('https://source.unsplash.com/random/800x600')" }}></div>
+      <div className="w-full  h-40 bg-cover bg-center" >
+      <img
+          src="https://via.placeholder.com/900x300" //replace
+          alt="Background"
+          className="w-full h-48 object-cover"
+        />
+      </div>
 
       {/* Profile Details */}
-      <div className="relative -mt-10 w-28 h-24  right-4">
+      <div className="relative -mt-10 w-28 h-24 right-60">
         <img
-          src="https://via.placeholder.com/150" // Replace with a profile picture URL
+          src="https://via.placeholder.com/150" //replace
           alt="Profile"
           className="rounded-full border-4 border-gray-800"
         />
       </div>
-
-      <div className="p-4 text-center inset-0 bottom-0 flex justify-between flex-col">
+{/* Userinfo */}
+<div className="p-4">
+<div className="flex flex-col md:flex-row md:space-x-8">
+      <div className="p-4 text-left flex-1">
         <div className="flex flex-col">
         <h1 className="text-xl font-bold">Richard Wright</h1>
         <p className="text-sm text-gray-400 mt-2">
@@ -256,32 +274,7 @@ const ProfilePage = () => {
         <p className="text-sm text-gray-500 mt-1">
           📍 Ghaziabad (201206), U.P.
         </p>
-        </div>
- {/* Social Media Icons */}
- <div className="flex flex-col items-end space-y-4"></div>
- <div className="flex  mt-1 space-x-4 text-xl">
- <FaInstagram  className="text-pink-400 hover:text-purple-300 cursor-pointer" />
-              <FaFacebook className="text-blue-400 hover:text-blue-300 cursor-pointer" />
-              <FaEnvelope className="text-blue-400 hover:text-gray-300 cursor-pointer" />
-              <MdEdit className="text-gray-400 hover:text-gray-300 cursor-pointer" />
-        </div>
- {/* Stats */}
- <div className="mt-5 flex justify-around w-full text-sm">
-          <div className="text-center">
-            <h3 className="font-bold text-lg">319</h3>
-            <p className="text-gray-500">Posts</p>
-          </div>
-          <div className="text-center">
-            <h3 className="font-bold text-lg">2.1M</h3>
-            <p className="text-gray-500">Followers</p>
-          </div>
-          <div className="text-center">
-            <h3 className="font-bold text-lg">576</h3>
-            <p className="text-gray-500">Following</p>
-          </div>
-        </div>
- {/* Buttons */}
- <div className="mt-5 flex justify-center">
+        <div className="mt-5 flex justify-start">
           <button className="px-4 py-2 bg-gray-900 border-b-2 border-purple-400 text-white rounded-full hover:bg-purple-600">
             Profile Settings
           </button>
@@ -289,10 +282,37 @@ const ProfilePage = () => {
             <FaEdit />
           </button>
         </div>
-      </div>
+        </div>
+        </div>
+ {/* Social Media Icons */}
+ <div className="flex-1 p-4">
+ <div className="flex justify-end space-x-4 text-xl mb-4">
+             <FaInstagram  className="text-pink-400 hover:text-purple-300 cursor-pointer" />
+              <FaFacebook className="text-blue-400 hover:text-blue-300 cursor-pointer" />
+              <FaEnvelope className="text-blue-400 hover:text-gray-300 cursor-pointer" />
+              <MdEdit className="text-gray-400 hover:text-gray-300 cursor-pointer" />
+        </div>
+ {/* Stats */}
+ <div className="mt-5 grid grid-cols-3 gap-4  border-t border-gray-700 ">
+          <div className="text-center">
+            <h3 className="font-bold text-lg">{userProfile?.posts.length}11</h3>
+            <p className="text-gray-500">Posts</p>
+          </div>
+          <div className="text-center">
+            <h3 className="font-bold text-lg">{userProfile?.followers.length}13</h3>
+            <p className="text-gray-500">Followers</p>
+          </div>
+          <div className="text-center">
+            <h3 className="font-bold text-lg">{userProfile?.following.length}22</h3>
+            <p className="text-gray-500">Following</p>
+          </div>
+        </div>
+        </div>
+        </div>
+       </div>
        </div>
       {/*activity*/}
-      <div className="flex-2 p-4 border border-purple-400 ">
+      <div className="flex-2 p-4  ">
       <div className="bg-gray-900 max-w-[900px] mx-auto text-white p-9 flex items-center justify-between rounded-md">
       <div>
         <h1 className="text-lg font-bold">Activity</h1>
