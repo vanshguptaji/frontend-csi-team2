@@ -1,9 +1,38 @@
 import React from "react";
+import Post from "../components/Posts.jsx";
 import { FaInstagram, FaFacebook, FaEdit,FaEnvelope } from 'react-icons/fa';
 import { MdEdit } from "react-icons/md";
+import HotTopics from "../components/Hottopics.jsx";
+import Followings from "../components/Followings.jsx";
+import Addfriends from "../components/Addfriends.jsx";
+import Favgroups from "../components/Favgroups.jsx";
+const posts = [
+  {
+    image: "https://via.placeholder.com/600x300",
+    time: "30 minutes ago",
+    caption: "The Earth has music for those who listen",
+    hashtags: "#NatureLovers #Explore #WildlifePhotography #MotherNature #NaturePerfection",
+    likes: 1200,
+    comments: 173,
+    shares: 229,
+    views: "1K+",
+    isVideo: false,
+  },
+  {
+    image: "https://via.placeholder.com/600x300",
+    time: "50 minutes ago",
+    caption: "The Earth has music for those who listen",
+    hashtags: "#NatureLovers #Explore #WildlifePhotography #MotherNature #NaturePerfection",
+    likes: 1200,
+    comments: 173,
+    shares: 229,
+    views: "1K+",
+    isVideo: true,
+  },
+];
 const ProfilePage = () => {
   return (
-    <div className="h-screen flex flex-col bg-black  text-white">
+    <div className="min-h-screen  flex flex-col bg-black  text-white">
       {/* Navbar */}
       <header className="flex items-center justify-between px-6 py-4 bg-black border-b border-gray-700">
         {/* Logo */}
@@ -178,10 +207,12 @@ const ProfilePage = () => {
         </aside>
 
         {/* Main Content */}
-        <main className="flex-1 p-9  ">
+        <div className="min-h-screen bg-black  text-white p-6 flex-1">
+        <div className="max-w-6xl mx-auto flex gap-6">
+        <main className="flex-1 p-9 border-purple-400 ">
           <h1 className="text-2xl font-bold"></h1>
           <p className="text-gray-400"></p>
-          <div className="flex flex-col items-center  max-w-[900px] mx-auto bg-gray-900 text-white rounded-xl overflow-hidden shadow-lg">
+          <div className="flex flex-col items-center max-w-[900px] mx-auto bg-gray-900 text-white rounded-xl overflow-hidden shadow-lg">
       {/* Background Image */}
       <div className="w-full  h-40 bg-cover bg-center" style={{ backgroundImage: "url('https://source.unsplash.com/random/800x600')" }}></div>
 
@@ -196,7 +227,7 @@ const ProfilePage = () => {
 
       <div className="p-4 text-center inset-0 bottom-0 flex justify-between flex-col">
         <div className="flex flex-col">
-        <h2 className="text-xl font-bold">Richard Wright</h2>
+        <h1 className="text-xl font-bold">Richard Wright</h1>
         <p className="text-sm text-gray-400 mt-2">
           I'm delighted to introduce myself as a professional musician
         </p>
@@ -237,10 +268,10 @@ const ProfilePage = () => {
           </button>
         </div>
       </div>
-    </div>
-{/*activity*/}
-<div className="flex-2 p-9 ">
-<div className="bg-gray-900 max-w-[900px] mx-auto text-white p-9 flex items-center justify-between rounded-md">
+       </div>
+      {/*activity*/}
+      <div className="flex-2 p-4 border border-purple-400 ">
+      <div className="bg-gray-900 max-w-[900px] mx-auto text-white p-9 flex items-center justify-between rounded-md">
       <div>
         <h1 className="text-lg font-bold">Activity</h1>
         <p className="text-sm text-purple-400">2.1M Followers</p>
@@ -254,13 +285,59 @@ const ProfilePage = () => {
       <button className="bg-purple-500 text-white px-4 py-2 rounded-full hover:bg-purple-600">
         Create a Post
       </button>
-    </div>
+     </div>
+      </div>
+      <div className="min-h-screen  p-6">
+      <div className="max-w-4xl mx-auto space-y-6">
+        {posts.map((post, index) => (
+          <Post key={index} {...post} />
+        ))}
+      </div>
+      </div>
+      </main>
+      
+    {/* Left Content - Profile Posts */}
+   
+
+    {/* Right Sidebar */}
+    <aside className="w-72  rounded-lg p-4 flex-shrink-0 space-y-3 ">
+      <div className="bg-black text-white p-4 rounded-lg shadow-md">
+        <div className="flex items-center mb-3">
+          {/* Icon */}
+          <div className="text-yellow-500 text-2xl mr-3">⭐</div>
+          {/* Title */}
+          <p className="text-gray-400">Grow professionally with Premium</p>
+        </div>
+        {/* Call to Action */}
+        <p className="text-lg font-semibold text-white">
+          Try 1 month for $0
+        </p>
+      </div>
+       {/* Hot Topics Component */}
+       <div> 
+        <HotTopics />
+        </div>
+        <div>
+          <Followings/>
+        </div>
+        <div>
+          <Addfriends/>
+        </div>
+        <div>
+          <Favgroups/>
+        </div>
+   
+    </aside>
+  </div>
 </div>
 
 
-        </main>
+        
       </div>
+
+      
     </div>
+    
   );
 };
 
