@@ -1,4 +1,4 @@
-/*import { Home, LogOut, MessageCircle, PlusSquare, TrendingUp, LogOutIcon, Settings} from 'lucide-react'
+import { Home, LogOut, MessageCircle, PlusSquare, TrendingUp, LogOutIcon, Settings} from 'lucide-react'
 import React from 'react'
 import { Avatar,AvatarImage,AvatarFallback } from './ui/avatar'
 import { useSelector } from 'react-redux'
@@ -25,7 +25,7 @@ const sidebarHandler = (textType) => {
 
   return (
     <div className='fixed top-10 z-10 left-0 px-4 border-gray-300 w-[16%] h-screen'>
-   <div className=' flex flex-col'>
+   <div className=' flex flex-col '>
     <h1>LOGO</h1>
    {
     sidebarItems.map((item,index)=>{
@@ -43,4 +43,4 @@ const sidebarHandler = (textType) => {
   )
 }
 
-export default leftsidebar*/
+export default leftsidebar 

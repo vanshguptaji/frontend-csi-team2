@@ -9,7 +9,7 @@ const HotTopics = () => {
   ];
 
   return (
-    <div className="bg-black text-white p-4 rounded-lg shadow-md max-w-lg mx-auto">
+    <div className="bg-black text-white p-4 rounded-lg shadow-md max-w-lg mx-auto border border-purple-400">
       {/* Header */}
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-semibold">Hot Topics</h2>

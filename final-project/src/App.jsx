@@ -4,6 +4,7 @@ import Signin from './components/Signin'
 import Signup from './components/Signup'
 import Profilepage from './components/Profilepage'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import SplashScreen from './components/splashscreen'
 const browserRouter = createBrowserRouter(
  
   
@@ -29,6 +30,10 @@ const browserRouter = createBrowserRouter(
 {
   path:'/profilepage',
   element:<Profilepage />
+},
+{
+  path:'/splashscreen',
+  element:<SplashScreen />
 }
 
 ])
